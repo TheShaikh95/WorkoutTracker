@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/favicon.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Workout Tracker | Exercise</title>
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-sm shadow navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/exercise">
+            <img width="80" height="80" src="pictures/logo.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown active">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/stats">Go To Stats</a>
+                </li>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Welcome, <span id="navbar-username"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="exercise-page-content">
+        <div id="exercise-main-content">
+            <h3>Add Exercise</h3>
+            <div id="add-exercise" class="card text-white bg-info mb-3" style="width: 100%;">
+                <div class="card-header">Click to add exercise</div>
+                <div class="card-body">
+                    <h5 class="card-title">Start Doing</h5>
+                    <p class="card-text">Sometimes you won't feel like working out, but then you do it and it makes your
+                        day.</p>
+                </div>
+            </div>
+            <hr>
+            <h3>Recently Added</h3>
+            <div id="recently-added-spinner" class="spinner-grow mt-5"
+                style="width: 3rem; height: 3rem; margin-left: 50%;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div id="recently-added-exercise-content">
+            </div>
+        </div>
+
+        <div id="add-exercise-form" class="shadow bg-white rounded d-none">
+            <div id="exercise-form-errors" class="text-left d-none alert alert-danger" role="alert">
+                The following error(s) occured
+                <ul class="ml-3"></ul>
+            </div>
+            <form id="exercise-form-elment" class="container pt-4 pb-4">
+                <div class="form-group">
+                    <label>Workout Type</label>
+                    <input type="text" id="workout-type-input" class="form-control" name="type" list="workoutList"
+                        required>
+                    <datalist id="workoutList">
+                        <option value="Shoulders">
+                        <option value="Triceps">
+                        <option value="Biceps">
+                        <option value="Chest">
+                        <option value="Back">
+                        <option value="Legs">
+                        <option value="Abs">
+                        <option value="Cardio">
+                            </datali>
+                </div>
+                <div class="form-group">
+                    <label>Exercise Name</label>
+                    <input type="text" class="form-control" name="name" list="exerciseList" required>
+                    <datalist id="exerciseList">
+
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label>Time Spent (Minutes)</label>
+                    <input type="number" class="form-control" name="time" min="0" required>
+                </div>
+                <div id="cardio-type" class="d-none">
+                    <div class="form-group">
+                        <label>Distance Covered (kilometre)</label>
+                        <input type="number" class="form-control" name="distance" min="0" required>
+                    </div>
+                </div>
+                <div id="other-type" class="d-none">
+                    <div class="form-group">
+                        <label>Weight (kilogram)</label>
+                        <input type="number" class="form-control" name="weight" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Reps</label>
+                        <input type="number" class="form-control" name="reps" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Sets</label>
+                        <input type="number" class="form-control" name="sets" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input id="exercise-form-date" type="date" class="form-control" name="date" required>
+                </div>
+                <div class="pt-4 d-flex justify-content-around">
+                    <button type="button" id="exercise-form-cancel-btn"
+                        class="pl-5 pr-5 btn btn-secondary">Cancel</button>
+                    <button type="submit" id="exercise-form-save-btn" class="pl-5 pr-5 btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <br><br>
+    <footer class="font-weight-bold mt-5 shadow-sm text-white bg-dark pt-3 pb-3 text-center">
+        Created with &#129505;
+    </footer>
+
+    <!-- Bootstrap Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap PopperJS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script src="api.js"></script>
+    <script src="exercise.js"></script>
+</body>
+
+</html>
